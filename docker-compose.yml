@@ -1,7 +1,7 @@
 version: '3'
 services:
   monerohub:
-    image: monerohub:latest
+    image: josephmakin/monerohub:latest
     environment:
       - MONGO_URI=mongodb://admin:password@mongo:27017
       - RPC_HOST=wallet-rpc
