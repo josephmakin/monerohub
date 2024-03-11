@@ -49,10 +49,11 @@ services:
     environment:
       - DAEMON_HOST=stagenet.community.rino.io:38081
       - DAEMON_PORT=38081
+      - LOG_LEVEL=3
       - RPC_BIND_PORT=18081
     ports:
       - 18081:18081
     volumes:
       - ${PWD}/config:/config:Z
-      - ${PWD}/wallets/stagenet:/monero:Z
       - ${PWD}/scripts:/scripts:Z
+      - ${PWD}/wallets/stagenet:/monero:Z
