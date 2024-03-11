@@ -18,13 +18,13 @@ func main() {
 
     err = services.InitMonero(os.Getenv("RPC_HOST"), os.Getenv("RPC_PORT"))
     if err != nil {
-        log.Fatal("Error connecting to monero-wallet-rpc", err)
+        log.Fatalf("Error connecting to monero-wallet-rpc: %v", err)
 
     }
 
     err = services.InitMongo(os.Getenv("MONGO_URI"))
     if err != nil {
-        log.Fatal("Error connecting to mongo", err)
+        log.Fatalf("Error connecting to mongo: %v", err)
     }
 
     err = services.InitRedis(os.Getenv("REDIS_ADDRESS"), os.Getenv("REDIS_PASSWORD"))
