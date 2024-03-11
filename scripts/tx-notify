@@ -1,0 +1,5 @@
+#!/bin/bash
+
+TXID="$1"
+MONEROHUB_URL="http://monerohub:8080/api/v1/transaction"
+curl -X POST -H "Content-Type: application/json" -d "{\"txid\": \"$TXID\"}" $MONEROHUB_URL
