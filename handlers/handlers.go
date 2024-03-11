@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/go-redis/redis"
 	"github.com/josephmakin/monerohub/models"
 	"github.com/josephmakin/monerohub/services"
 	"github.com/monero-ecosystem/go-monero-rpc-client/wallet"
@@ -14,7 +15,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"github.com/go-redis/redis"
 )
 
 type PaymentsHandler struct {
