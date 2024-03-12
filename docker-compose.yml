@@ -1,5 +1,14 @@
 version: '3'
 services:
+  monerochat:
+    image: josephmakin/monerochat:latest
+    environment:
+      - CALLBACK_URL=http://monerochat:5000/api/v1/transaction
+      - MONEROHUB_ENDPOINT=http://monerohub:8080/api/v1/payment
+      - MONGO_URI=mongodb://admin:password@mongo:27017
+    ports:
+      - 5000:5000
+
   monerohub:
     image: josephmakin/monerohub:latest
     environment:
