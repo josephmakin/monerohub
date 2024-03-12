@@ -1,11 +1,11 @@
 package v1
 
 import (
-    "context"
+	"context"
 
-    "github.com/gin-gonic/gin"
-    "github.com/josephmakin/monerohub/handlers"
-    "github.com/josephmakin/monerohub/services"
+	"github.com/gin-gonic/gin"
+	"github.com/josephmakin/monerohub/handlers"
+	"github.com/josephmakin/monerohub/services"
 )
 
 func SetupRoutes(router *gin.Engine) {
