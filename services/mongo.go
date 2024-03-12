@@ -7,17 +7,23 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const database string = "monerohub"
-var PaymentsCollection *mongo.Collection
+var (
+	Collections		map[string]*mongo.Collection
+)
 
-func InitMongo(uri string) error {
+func InitMongo(uri, dbName string, colls map[string]string) error {
     ctx := context.Background()
     client, err := mongo.Connect(ctx, options.Client().ApplyURI(uri))
     if err != nil {
 		return err
     }
 
-    PaymentsCollection = client.Database(database).Collection("payments")
+	Collections = make(map[string]*mongo.Collection)
+
+    db := client.Database(dbName)
+	for name, collName := range colls {
+		Collections[name] = db.Collection(collName)
+	}
 
 	return nil
 }

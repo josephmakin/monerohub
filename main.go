@@ -22,7 +22,10 @@ func main() {
 
     }
 
-    err = services.InitMongo(os.Getenv("MONGO_URI"))
+	collections := map[string]string{
+		"payments": "payments",
+	}
+    err = services.InitMongo(os.Getenv("MONGO_URI"), "monerohub", collections)
     if err != nil {
         log.Fatalf("Error connecting to mongo: %v", err)
     }

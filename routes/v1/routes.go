@@ -11,7 +11,7 @@ import (
 func SetupRoutes(router *gin.Engine) {
     paymentsHandler := handlers.NewPaymentsHandler(
         context.TODO(),
-        services.PaymentsCollection,
+        services.Collections["payments"],
         services.RedisClient,
     )
 
