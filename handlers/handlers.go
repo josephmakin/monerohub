@@ -42,11 +42,10 @@ func (paymentsHandler *PaymentsHandler) GetOnePaymentHandler (c *gin.Context) {
         return
     }
 
-    cur := paymentsHandler.collection.FindOne(paymentsHandler.ctx, bson.M{
-        "_id": objectID,
-    })
     var payment models.Payment
-    err = cur.Decode(&payment)
+    err = paymentsHandler.collection.FindOne(paymentsHandler.ctx, bson.M{
+        "_id": objectID,
+    }).Decode(&payment)
     if err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{
             "error": err.Error(),
@@ -54,9 +53,7 @@ func (paymentsHandler *PaymentsHandler) GetOnePaymentHandler (c *gin.Context) {
         return
     }
 
-    c.JSON(http.StatusOK, gin.H{
-        "payment": payment,
-    })
+    c.JSON(http.StatusOK, payment)
 }
 
 func (paymentsHandler *PaymentsHandler) CreateOnePaymentHandler (c *gin.Context) {
@@ -135,7 +132,9 @@ func (handler *PaymentsHandler) AddOneTransactionHandler (c *gin.Context) {
     }
 
     var payment models.Payment
-    err = handler.collection.FindOne(handler.ctx, bson.M{"address": transaction.Address}).Decode(&payment)
+    err = handler.collection.FindOne(handler.ctx, bson.M{
+        "address": transaction.Address,
+    }).Decode(&payment)
     if err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{
             "error": err.Error(),
@@ -151,7 +150,5 @@ func (handler *PaymentsHandler) AddOneTransactionHandler (c *gin.Context) {
         return
     }
 
-    c.JSON(http.StatusOK, gin.H{
-        "transaction": transaction,
-    })
+    c.JSON(http.StatusOK, transaction)
 }
