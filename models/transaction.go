@@ -3,13 +3,13 @@ package models
 import (
 	"bytes"
 	"encoding/json"
-    "net/http"
+	"net/http"
 	"time"
 )
 
 type Transaction struct {
     Address string `json:"address,omitempty" bson:"-"`
-    Amount int `json:"amount" bson:"amount"`
+    Amount float32 `json:"amount" bson:"amount"`
     Timestamp time.Time `json:"timestamp" bson:"timestamp"`
     TxID string `json:"txid" bson:"txid"`
 }
