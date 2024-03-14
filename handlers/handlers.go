@@ -66,7 +66,10 @@ func (paymentsHandler *PaymentsHandler) CreateOnePaymentHandler (c *gin.Context)
         return
     }
 
-    resp, err := services.Monero.CreateAddress(&wallet.RequestCreateAddress{AccountIndex: 0})
+    resp, err := services.Monero.CreateAddress(&wallet.RequestCreateAddress{
+    	AccountIndex: 0,
+    	Label:        "",
+    })
     payment.Address = resp.Address
     payment.ID = primitive.NewObjectID()
     payment.Timestamp = time.Now()
