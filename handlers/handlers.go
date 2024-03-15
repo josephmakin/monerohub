@@ -109,7 +109,7 @@ func (handler *PaymentsHandler) AddOneTransactionHandler (c *gin.Context) {
 
     transaction = models.Transaction{
         Address: transactionDetails.Transfer.Address,
-        Amount: float32(transactionDetails.Transfer.Amount),
+        Amount: transactionDetails.Transfer.Amount,
         Timestamp: time.Unix(int64(transactionDetails.Transfer.Timestamp), 0),
         TxID: transactionDetails.Transfer.TxID,
     }

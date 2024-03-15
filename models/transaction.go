@@ -9,7 +9,7 @@ import (
 
 type Transaction struct {
     Address string `json:"address,omitempty" bson:"-"`
-    Amount float32 `json:"amount" bson:"amount"`
+    Amount uint64 `json:"amount" bson:"amount"`
     Timestamp time.Time `json:"timestamp" bson:"timestamp"`
     TxID string `json:"txid" bson:"txid"`
 }
